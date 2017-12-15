@@ -546,14 +546,14 @@ else:
     # ext_args['include_dirs'].append('/usr/include/vtk')
     # ext_args['include_dirs'].append('/usr/local/include/vtk')
     # pcl 1.7(Ubuntu)
-    ext_args['include_dirs'].append('/usr/include/vtk-5.8')
-    ext_args['library_dirs'].append('/usr/lib')
+    # ext_args['include_dirs'].append('/usr/include/vtk-5.8')
+    # ext_args['library_dirs'].append('/usr/lib')
     # ext_args['libraries'].append('libvtk*.so')
     # pcl 1.8.1(MacOSX)
-    ext_args['include_dirs'].append('/usr/local/include/vtk-8.0')
-    ext_args['library_dirs'].append('/usr/local/lib')
-    ext_args['include_dirs'].append('/usr/local/Cellar/vtk/8.0.1/include')
-    ext_args['library_dirs'].append('/usr/local/Cellar/vtk/8.0.1/lib')
+    # ext_args['include_dirs'].append('/usr/local/include/vtk-8.0')
+    # ext_args['library_dirs'].append('/usr/local/lib')
+    # ext_args['include_dirs'].append('/usr/local/Cellar/vtk/8.0.1/include')
+    # ext_args['library_dirs'].append('/usr/local/Cellar/vtk/8.0.1/lib')
     # ext_args['libraries'].append('libvtk*.dylib')
 
     for flag in pkgconfig('--cflags-only-other'):
@@ -566,10 +566,15 @@ else:
     # clang?
     # https://github.com/strawlab/python-pcl/issues/129
     # gcc base libc++, clang base libstdc++
-    # gcc5
     # ext_args['extra_compile_args'].append("-stdlib=libstdc++")
-    # gcc4?
     # ext_args['extra_compile_args'].append("-stdlib=libc++")
+    if platform.system() == "Darwin":
+        # or gcc5?
+        ext_args['extra_compile_args'].append("-stdlib=libstdc++")
+        ext_args['extra_compile_args'].append("-mmacosx-version-min=10.6")
+    else:
+        # gcc4?
+        ext_args['extra_compile_args'].append("-stdlib=libc++")
 
     for flag in pkgconfig('--libs-only-l'):
         if flag == "-lflann_cpp-gd":
