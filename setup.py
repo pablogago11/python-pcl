@@ -574,7 +574,8 @@ else:
         ext_args['extra_compile_args'].append("-mmacosx-version-min=10.6")
     else:
         # gcc4?
-        ext_args['extra_compile_args'].append("-stdlib=libc++")
+        # ext_args['extra_compile_args'].append("-stdlib=libc++")
+        pass
 
     for flag in pkgconfig('--libs-only-l'):
         if flag == "-lflann_cpp-gd":
