@@ -570,9 +570,10 @@ else:
     # ext_args['extra_compile_args'].append("-stdlib=libc++")
     if platform.system() == "Darwin":
         # or gcc5?
-        ext_args['extra_compile_args'].append("-stdlib=libstdc++")
-        ext_args['extra_compile_args'].append("-mmacosx-version-min=10.6")
-        ext_args['extra_compile_args'].append('-openmp')
+        # ext_args['extra_compile_args'].append("-stdlib=libstdc++")
+        # ext_args['extra_compile_args'].append("-mmacosx-version-min=10.6")
+        # ext_args['extra_compile_args'].append('-openmp')
+        pass
     else:
         # gcc4?
         # ext_args['extra_compile_args'].append("-stdlib=libc++")
