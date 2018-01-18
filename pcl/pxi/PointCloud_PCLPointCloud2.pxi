@@ -264,8 +264,8 @@ cdef class PCLPointCloud2:
         cdef int error = 0
         with nogil:
             # NG
-            # error = pclio.loadPCDFile(string(s), <cpp.PointCloud[pcl_pc2.PCLPointCloud2]> deref(self.thisptr()))
-            # error = pclio.loadPCDFile(string(s), deref(self.thisptr()))
+            # error = pclio.loadPCDFile [pcl_pc2.PCLPointCloud2](string(s), <cpp.PointCloud[pcl_pc2.PCLPointCloud2]> deref(self.thisptr()))
+            # error = pclio.loadPCDFile [pcl_pc2.PCLPointCloud2](string(s), deref(self.thisptr()))
             pass
         
         return error
@@ -274,8 +274,8 @@ cdef class PCLPointCloud2:
         cdef int ok = 0
         with nogil:
             # NG
-            # ok = pclio.loadPLYFile(string(s), <cpp.PointCloud[pcl_pc2.PCLPointCloud2]> deref(self.thisptr()))
-            # ok = pclio.loadPLYFile(string(s), deref(self.thisptr()))
+            # ok = pclio.loadPLYFile [pcl_pc2.PCLPointCloud2](string(s), <cpp.PointCloud[pcl_pc2.PCLPointCloud2]> deref(self.thisptr()))
+            # ok = pclio.loadPLYFile [pcl_pc2.PCLPointCloud2](string(s), deref(self.thisptr()))
             pass
         
         return ok
@@ -292,7 +292,7 @@ cdef class PCLPointCloud2:
         cdef string s = string(f)
         with nogil:
             # OK
-            # error = pclio.savePCDFile(s, deref(self.thisptr()), binary)
+            # error = pclio.savePCDFile [pcl_pc2.PCLPointCloud2](s, deref(self.thisptr()), binary)
             pass
         
         return error
@@ -301,7 +301,7 @@ cdef class PCLPointCloud2:
         cdef int error = 0
         cdef string s = string(f)
         with nogil:
-            # error = pclio.savePLYFile(s, deref(self.thisptr()), binary)
+            # error = pclio.savePLYFile [pcl_pc2.PCLPointCloud2](s, deref(self.thisptr()), binary)
             pass
         
         return error

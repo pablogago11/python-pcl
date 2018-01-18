@@ -225,16 +225,16 @@ cdef class PointCloud_PointXYZI:
         cdef int error = 0
         with nogil:
             # NG
-            # error = pclio.loadPCDFile(string(s), <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()))
-            error = pclio.loadPCDFile(string(s), deref(self.thisptr()))
+            # error = pclio.loadPCDFile [cpp.PointXYZI](string(s), <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()))
+            error = pclio.loadPCDFile [cpp.PointXYZI](string(s), deref(self.thisptr()))
         return error
 
     def _from_ply_file(self, const char *s):
         cdef int ok = 0
         with nogil:
             # NG
-            # ok = pclio.loadPLYFile(string(s), <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()))
-            ok = pclio.loadPLYFile(string(s), deref(self.thisptr()))
+            # ok = pclio.loadPLYFile [cpp.PointXYZI](string(s), <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()))
+            ok = pclio.loadPLYFile [cpp.PointXYZI](string(s), deref(self.thisptr()))
         return ok
 
     def to_file(self, const char *fname, bool ascii=True):
@@ -249,11 +249,11 @@ cdef class PointCloud_PointXYZI:
         cdef string s = string(f)
         with nogil:
             # NG
-            # error = pclio.savePCDFile(s, <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()), binary)
+            # error = pclio.savePCDFile [cpp.PointXYZI](s, <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()), binary)
             # OK
-            error = pclio.savePCDFile(s, deref(self.thisptr()), binary)
+            error = pclio.savePCDFile [cpp.PointXYZI](s, deref(self.thisptr()), binary)
             # pclio.PointCloud[cpp.PointXYZI] *p = self.thisptr()
-            # error = pclio.savePCDFile(s, p, binary)
+            # error = pclio.savePCDFile [cpp.PointXYZI](s, p, binary)
         return error
 
     def _to_ply_file(self, const char *f, bool binary=False):
@@ -261,8 +261,8 @@ cdef class PointCloud_PointXYZI:
         cdef string s = string(f)
         with nogil:
             # NG
-            # error = pclio.savePLYFile(s, <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()), binary)
-            error = pclio.savePLYFile(s, deref(self.thisptr()), binary)
+            # error = pclio.savePLYFile [cpp.PointXYZI](s, <cpp.PointCloud[cpp.PointXYZI]> deref(self.thisptr()), binary)
+            error = pclio.savePLYFile [cpp.PointXYZI](s, deref(self.thisptr()), binary)
         return error
 
     def make_segmenter(self):
