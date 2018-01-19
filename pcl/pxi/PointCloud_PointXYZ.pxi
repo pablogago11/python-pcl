@@ -247,12 +247,13 @@ cdef class PointCloud:
             ok = pclio.loadPLYFile [cpp.PointXYZ](string(s), deref(self.thisptr()))
         return ok
 
+    # no use pcl1.6
     def _from_obj_file(self, const char *s):
-        cdef int ok = 0
-        with nogil:
-            # NG
-            # ok = pclio.loadOBJFile [cpp.PointXYZ](string(s), <cpp.PointCloud[cpp.PointXYZ]> deref(self.thisptr()))
-            ok = pclio.loadOBJFile [cpp.PointXYZ](string(s), deref(self.thisptr()))
+        cdef int ok = -1
+        # with nogil:
+        #     # NG
+        #     # ok = pclio.loadOBJFile [cpp.PointXYZ](string(s), <cpp.PointCloud[cpp.PointXYZ]> deref(self.thisptr()))
+        #     ok = pclio.loadOBJFile [cpp.PointXYZ](string(s), deref(self.thisptr()))
         return ok
 
     def to_file(self, const char *fname, bool ascii=True):

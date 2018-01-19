@@ -232,6 +232,15 @@ cdef class PointCloud_PointXYZRGB:
             # ok = cpp.loadPLYFile [cpp.PointXYZRGB](string(s), p)
         return ok
 
+    # no use pcl1.6
+    def _from_obj_file(self, const char *s):
+        cdef int ok = -1
+        # with nogil:
+        #     # NG
+        #     # ok = pclio.loadOBJFile [cpp.PointXYZRGB](string(s), <cpp.PointCloud[cpp.PointXYZRGB]> deref(self.thisptr()))
+        #     ok = pclio.loadOBJFile [cpp.PointXYZRGB](string(s), deref(self.thisptr()))
+        return ok
+
     def to_file(self, const char *fname, bool ascii=True):
         """Save pointcloud to a file in PCD format.
 
