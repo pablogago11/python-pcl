@@ -5,7 +5,6 @@
 import numpy as np
 import pcl
 import random
-import pcl.pcl_visualization
 import math
 import sys # ƒ‚ƒWƒ…[ƒ‹‘®« argv ‚ğæ“¾‚·‚é‚½‚ß
 
@@ -153,8 +152,14 @@ if len(inliers) != 0:
 
 
 # current(0.3.0) Windows Only Test
-isWindows = False
-if isWindows == True:
+# or conda package install
+isVisual = True
+try:
+    import pcl.pcl_visualization
+except ImportError:
+    isVisual = False
+
+if isVisual == True:
     # creates the visualization object and adds either our orignial cloud or all of the inliers
     # depending on the command line arguments specified.
     # boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;
