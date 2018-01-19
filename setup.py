@@ -14,9 +14,6 @@ import platform
 import os
 import time
 
-sys.path.append('./pcl')
-sys.path.append('./tests')
-
 setup_requires = []
 install_requires = [
     'filelock',
