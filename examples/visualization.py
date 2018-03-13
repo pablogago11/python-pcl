@@ -21,9 +21,8 @@ visual.ShowColorCloud(cloud, b'cloud')
 #     visual.WasStopped()
 # end
 
-flag = True
-while flag:
-    flag != visual.WasStopped()
-end
+while visual.WasStopped() != True:
+    pass
+
 
 
